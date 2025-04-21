@@ -1,0 +1,47 @@
+<%- include("partials/header") %>
+
+<h2>Add Expense</h2>
+
+<form action="/add" method="POST">
+  <label for="title">Title</label>
+  <input type="text" name="title" id="title" required>
+
+  <label for="amount">Amount</label>
+  <input type="number" name="amount" id="amount" required>
+
+  <label for="category">Category</label>
+  <input type="text" name="category" id="category" required>
+
+  <label for="date">Date</label>
+  <input type="date" name="date" id="date" required>
+
+  <!-- Recurring Expenses Fields -->
+  <label for="isRecurring">Is this a recurring expense?</label>
+  <input type="checkbox" name="isRecurring" id="isRecurring">
+
+  <div id="recurringOptions" style="display: none;">
+    <label for="frequency">Frequency</label>
+    <select name="frequency" id="frequency">
+      <option value="daily">Daily</option>
+      <option value="weekly">Weekly</option>
+      <option value="monthly">Monthly</option>
+      <option value="yearly">Yearly</option>
+    </select>
+
+    <label for="nextDueDate">Next Due Date</label>
+    <input type="date" name="nextDueDate" id="nextDueDate">
+  </div>
+
+  <button type="submit">Add Expense</button>
+</form>
+
+<script>
+  // Toggle recurring options based on checkbox
+  document.getElementById('isRecurring').addEventListener('change', function() {
+    const recurringOptions = document.getElementById('recurringOptions');
+    recurringOptions.style.display = this.checked ? 'block' : 'none';
+  });
+</script>
+
+
+<%- include("partials/footer") %>

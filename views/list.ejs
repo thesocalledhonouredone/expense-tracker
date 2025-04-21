@@ -1,0 +1,20 @@
+<%- include("partials/header") %>
+
+<div class="page-header">
+  <h2>Detailed Expense List</h2>
+  <a href="/" class="btn-back">← Back to Dashboard</a>
+</div>
+
+<ul>
+  <% expenses.forEach(exp => { %>
+    <li>
+      <strong><%= exp.title %></strong> - $<%= exp.amount %> - <%= exp.category %>
+      <a href="/edit/<%= exp._id %>">Edit</a>
+      <form action="/delete/<%= exp._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include("partials/footer") %>
